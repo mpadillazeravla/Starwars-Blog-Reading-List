@@ -22,7 +22,7 @@ export const Home = (props) => {
 	<div className="overflow-scroll d-flex container " style={{width: "1500px"}}>
 		{/* map que crea una carta por cada personaje que se encuentra en el GET  */}
 
-		{store.personajes.map((item)=> <Card1 name={item.name}/>)}
+		{store.personajes.map((item, index)=> <Card1 name={item.name} gender={item.gender} hair={item.hair_color} eye={item.eye_color} id={index+1}/>)}
 		
 	{/* <Card1 name = "Obi Wan Kenobbi" gender = "male" hcolor = "blond" eyecolor = "blue"/>
 	<Card1 name = "Luke Skywalker" gender = "male" hcolor = "blond" eyecolor = "blue"/>
@@ -41,7 +41,7 @@ export const Home = (props) => {
 	</div>
 	<div className="overflow-scroll d-flex container " style={{width: "1500px"}}>
 
-	{store.planetas.map((item)=> <Card2 planetname={item.name}/>)}
+	{store.planetas.map((item, index)=> <Card2 planetname={item.name} population={item.population} terrain={item.terrain} id={index+1}/>)}
 
 	{/* <Card2 planetname = "Alderaan" population = "2000M" terrain = "grasslands, mountains"/>
 	<Card2 planetname = "Yavin IV" population = "1000" terrain = "jungle, rainforests"/>

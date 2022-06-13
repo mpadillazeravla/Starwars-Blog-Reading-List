@@ -19,11 +19,15 @@ const getState = ({
             personajes: [],
             planetas: [],
             favorites: [],
-            classboton: ("btn-outline-warning")
+            classboton: ("btn-outline-warning"),
+            getids: {},
+            getplanetsids: {}
+
 
         },
+
         actions: {
-            // Use getActions to call a function within a fuction
+            // Use getActions to call a function within a function
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
             },
@@ -34,28 +38,57 @@ const getState = ({
                 	fetch().then().then(data => setStore({ "foo": data.bar }))
                 	
                 */
-                fetch('https://www.swapi.tech/api/planets/')
+                fetch('https://swapi.dev/api/planets/')
                     .then(res => res.json())
                     .then(data => setStore({
                         planetas: data.results
                     }))
-
-
-
             },
+
+
             loadPersonajes: () => {
                 /**
                 	fetch().then().then(data => setStore({ "foo": data.bar }))
                 	
                 */
-                fetch('https://www.swapi.tech/api/people/')
+                fetch('https://swapi.dev/api/people')
                     .then(res => res.json())
                     .then(data => setStore({
                         personajes: data.results
 
                     }))
+            },
 
+            getids: (theid) => {
+                /**
+                	fetch().then().then(data => setStore({ "foo": data.bar }))
+                	
+                */
+                fetch('https://swapi.dev/api/people/' + theid)
+                    .then(res => res.json())
+                    .then(data => setStore({
+                        getids: data
+                    }))
+                    // .then(data => setStore({
+                    //     getids: data.results.properties
+                    // }))
+                    .then(data => console.log(data))
+            },
 
+            getplanetsids: (theid2) => {
+                /**
+                	fetch().then().then(data => setStore({ "foo": data.bar }))
+                	
+                */
+                fetch('https://swapi.dev/api/planets/' + theid2)
+                    .then(res => res.json())
+                    .then(data => setStore({
+                        getplanetsids: data
+                    }))
+                    // .then(data => setStore({
+                    //     getids: data.results.properties
+                    // }))
+                    .then(data => console.log(data))
             },
 
             //aqui vamos a declarar la funcion para añadir a favoritos los nombres una vez que pulse en el icono corazon//
