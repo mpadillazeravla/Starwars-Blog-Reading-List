@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 export const Home = (props) => {
 	const {store, actions} = useContext(Context);
 	
+	
 
 	return (
 	<>
@@ -21,19 +22,7 @@ export const Home = (props) => {
 	<div className="overflow-scroll d-flex container " style={{width: "1500px"}}>
 		{/* map que crea una carta por cada personaje que se encuentra en el GET  */}
 
-		{store.personajes.map((item)=> <div className="card d-table me-5" style={{minWidth: "400px"}}>
-  <img src="https://i.imgur.com/y99qO61.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">{item.name}</h5>
-    <p className="card-text">Gender:  <br/> Hair Color: <br/> Eye-Color: 
-    </p>
-    <div className="container d-flex justify-content-between">
-    <Link to="/details" className="btn btn-outline-primary">Learn more!</Link>
-    <button type="button " className="btn btn-outline-warning " ><i className="fa-regular fa-heart"></i></button>
-    </div>
-  </div>
-
-</div>)}
+		{store.personajes.map((item)=> <Card1 name={item.name}/>)}
 		
 	{/* <Card1 name = "Obi Wan Kenobbi" gender = "male" hcolor = "blond" eyecolor = "blue"/>
 	<Card1 name = "Luke Skywalker" gender = "male" hcolor = "blond" eyecolor = "blue"/>
@@ -52,19 +41,7 @@ export const Home = (props) => {
 	</div>
 	<div className="overflow-scroll d-flex container " style={{width: "1500px"}}>
 
-	{store.planetas.map((item)=> <div className="card d-table me-5" style={{minWidth: "400px"}}>
-  <img src="https://i.imgur.com/y99qO61.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">{item.name}</h5>
-    <p className="card-text">Gender:  <br/> Hair Color: <br/> Eye-Color: 
-    </p>
-    <div className="container d-flex justify-content-between">
-    <Link to="/details" className="btn btn-outline-primary">Learn more!</Link>
-    <button type="button " className="btn btn-outline-warning " ><i className="fa-regular fa-heart"></i></button>
-    </div>
-  </div>
-
-</div>)}
+	{store.planetas.map((item)=> <Card2 planetname={item.name}/>)}
 
 	{/* <Card2 planetname = "Alderaan" population = "2000M" terrain = "grasslands, mountains"/>
 	<Card2 planetname = "Yavin IV" population = "1000" terrain = "jungle, rainforests"/>
@@ -75,3 +52,4 @@ export const Home = (props) => {
 	</>
 );
 }
+

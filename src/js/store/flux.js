@@ -17,13 +17,18 @@ const getState = ({
                 }
             ],
             personajes: [],
-            planetas: []
+            planetas: [],
+            favorites: [],
+            classboton: ("btn-outline-warning")
+
         },
         actions: {
             // Use getActions to call a function within a fuction
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
             },
+
+
             loadPlanets: () => {
                 /**
                 	fetch().then().then(data => setStore({ "foo": data.bar }))
@@ -51,10 +56,42 @@ const getState = ({
                     }))
 
 
-
-
-
             },
+
+            //aqui vamos a declarar la funcion para añadir a favoritos los nombres una vez que pulse en el icono corazon//
+            addfavoritos: (nombre) => {
+                const store = getStore();
+
+                let newListaFavoritos = [...store.favorites, nombre];
+                setStore({
+                    favorites: newListaFavoritos
+                });
+                setStore({
+                    classboton: "btn-warning"
+                })
+                console.log(store.favorites)
+            },
+
+            deletefavorito: (i) => {
+                const store = getStore();
+
+                let newFav = store.favorites.filter((elementfav, index) => {
+                    if (i !== index) return elementfav;
+                });
+                setStore({
+                    favorites: newFav
+                });
+                setStore({
+                    classboton: "btn-outline-warning"
+                })
+            },
+
+
+            // anuncio: () => {
+            //     alert("leche")
+            // },
+
+
             changeColor: (index, color) => {
                 //get the store
                 const store = getStore();
@@ -65,6 +102,8 @@ const getState = ({
                     if (i === index) elm.background = color;
                     return elm;
                 });
+
+
 
                 //reset the global store
                 setStore({

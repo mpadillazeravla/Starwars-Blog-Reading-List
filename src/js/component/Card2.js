@@ -1,8 +1,13 @@
-import React from "react";
+import React , {useContext} from "react";
 import { Link } from "react-router-dom";
 import propTypes from "prop-types";
+import { Context } from "../store/appContext";
+
 
 export const Card2 = (props) => {
+  const {store, actions} = useContext(Context);
+  
+
 	return (
 		<>
 <div className="card d-table me-5" style={{minWidth: "400px"}}>
@@ -13,7 +18,7 @@ export const Card2 = (props) => {
     <div className="container d-flex justify-content-between">
 
     <Link to="/planet_details" className="btn btn-outline-primary">Learn more!</Link>
-    <button type="button " className="btn btn-outline-warning "><i className="fa-regular fa-heart"></i></button>
+    <button type="button " className={"btn " + store.classboton} onClick={()=>actions.addfavoritos(props.planetname)}><i className="fa-regular fa-heart"></i></button>
     
   </div>
   </div>
