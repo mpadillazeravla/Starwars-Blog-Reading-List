@@ -13,7 +13,7 @@ export const Card2 = (props) => {
     <div className="container d-flex justify-content-between">
 
     <Link to="/planet_details" className="btn btn-outline-primary">Learn more!</Link>
-    <button type="button " class="btn btn-outline-warning "><i className="fa-regular fa-heart"></i></button>
+    <button type="button " className="btn btn-outline-warning "><i className="fa-regular fa-heart"></i></button>
     
   </div>
   </div>
