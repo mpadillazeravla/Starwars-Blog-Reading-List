@@ -18,7 +18,11 @@ export const Card2 = (props) => {
     <div className="container d-flex justify-content-between">
 
     <Link to={"/planet_details/" + props.id} className="btn btn-outline-primary">Learn more!</Link>
-    <button type="button " className={"btn " + store.classboton} onClick={()=>actions.addfavoritos(props.planetname)}><i className="fa-regular fa-heart"></i></button>
+    <button type="button " className = {store.favorites.includes(props.planetname) ? ("btn btn-warning") : ("btn btn-outline-warning")} onClick={()=>actions.addfavoritos(props.planetname)}>{store.favorites.includes(props.planetname) ? (
+										<i className="fas fa-heart" />
+									) : (
+										<i className="far fa-heart" />
+									)}</button>
     
   </div>
   </div>

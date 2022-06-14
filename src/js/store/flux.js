@@ -19,7 +19,7 @@ const getState = ({
             personajes: [],
             planetas: [],
             favorites: [],
-            classboton: ("btn-outline-warning"),
+            // classboton: ("btn-outline-warning"),
             getids: {},
             getplanetsids: {}
 
@@ -31,6 +31,7 @@ const getState = ({
             exampleFunction: () => {
                 getActions().changeColor(0, "green");
             },
+
 
 
             loadPlanets: () => {
@@ -95,13 +96,16 @@ const getState = ({
             addfavoritos: (nombre) => {
                 const store = getStore();
 
-                let newListaFavoritos = [...store.favorites, nombre];
-                setStore({
-                    favorites: newListaFavoritos
-                });
-                setStore({
-                    classboton: "btn-warning"
-                })
+                if (!store.favorites.includes(nombre)) {
+                    let newListaFavoritos = [...store.favorites, nombre];
+                    setStore({
+                        favorites: newListaFavoritos
+                    });
+                    // esto lo habia hecho para cambiar el icono cuando se pusiera en fav, pero se cambiaban todos los de todas las cartas, habia que liar más para solucionar
+                    // setStore({
+                    //     classboton: "btn-warning"
+                    // })
+                }
                 console.log(store.favorites)
             },
 

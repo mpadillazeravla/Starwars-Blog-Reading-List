@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import propTypes from "prop-types";
 import { Context } from "../store/appContext";
 
-
-
 export const Card1 = (props) => {
   const {store, actions} = useContext(Context);
   
@@ -20,7 +18,12 @@ export const Card1 = (props) => {
     </p>
     <div className="container d-flex justify-content-between">
     <Link to= {"/details/" + props.id} className="btn btn-outline-primary">Learn more!</Link>
-    <button type="button " className={"btn " + store.classboton} onClick={()=>actions.addfavoritos(props.name)}><i className="fa-regular fa-heart"></i></button>
+    <button type="button " 
+    className = {store.favorites.includes(props.name) ? ("btn btn-warning") : ("btn btn-outline-warning")} onClick={()=>actions.addfavoritos(props.name)}>{store.favorites.includes(props.name) ? (
+										<i className="fas fa-heart" />
+									) : (
+										<i className="far fa-heart" />
+									)}</button>
     </div>
   </div>
 
